@@ -1,0 +1,21 @@
+#root {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.main-loader{
+  width: 100vw;
+  height: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
