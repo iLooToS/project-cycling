@@ -37,7 +37,7 @@ function Registration({ setUser }) {
 
   return (
     <div>
-      <h1>Registration Page</h1>
+      <h1>Регистрация</h1>
       <form className='auth' onSubmit={onHandleSubmit}>
         <label htmlFor='name'>
           <input
@@ -50,7 +50,7 @@ function Registration({ setUser }) {
         <label htmlFor='email'>
           <input
             type='email'
-            placeholder='alex@mail.ru'
+            placeholder='mail'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -58,7 +58,7 @@ function Registration({ setUser }) {
         <label htmlFor='password'>
           <input
             type='password'
-            placeholder='password'
+            placeholder='пароль'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -66,7 +66,7 @@ function Registration({ setUser }) {
         <label htmlFor='password'>
           <input
             type='password'
-            placeholder='chek password'
+            placeholder='повторите пароль'
             value={cpassword}
             onChange={(e) => setCPassword(e.target.value)}
           />
