@@ -23,7 +23,7 @@ function Authorization({ setUser }) {
 
   return (
     <div>
-      <h1>Authorization Page</h1>
+      <h1>Авторизация</h1>
       <form className='auth' onSubmit={onHadleSubmit}>
         <label htmlFor='email'>
           <input
