@@ -9,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({User, Route}) {
-      this.belongsTo(Route, { foreignKey: 'routeId' });
+    static associate({User, Trail}) {
+      this.belongsTo(Trail, { foreignKey: 'trailId' });
       this.belongsTo(User, { foreignKey: 'userId' });
     }
   }
@@ -31,11 +31,11 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE',
       onUpdate: 'CASCADE',
     },
-    routeId: {
+    trailId: {
       allowNull: false,
       type: DataTypes.INTEGER,
       references: {
-        model: 'Routes',
+        model: 'Trails',
         key: 'id',
       },
       onDelete: 'CASCADE',
@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    modelName: 'Reviews',
+    modelName: 'Review',
   });
   return Review;
 };

@@ -17,11 +17,12 @@ module.exports = {
       },
       sequence: {
         type: Sequelize.INTEGER
-      },   routeId: {
+      }, 
+      trailId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'Routes',
+          model: 'Trails',
           key: 'id',
         },
         onDelete: 'CASCADE',
