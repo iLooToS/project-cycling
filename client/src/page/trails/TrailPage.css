@@ -1,0 +1,75 @@
+.isTrailPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  .button1 {
+    margin-bottom: 20px;
+    text-align: right; /* Выравниваем кнопку вправо */
+  }
+  
+  .button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .button button:hover {
+    background-color: #0056b3;
+  }
+  
+  h1, h2 {
+    color: white;
+    text-align: center;
+  }
+  
+  .allPort {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    margin-top: 20px;
+    flex-direction: row-reverse;
+  }
+  
+  .isComment {
+    flex-basis: calc(50% - 10px); /* Ширина 50%, учитывая отступы между элементами */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Добавляем скроллбар при необходимости */
+    max-height: 400px; /* Максимальная высота блока комментариев */
+  }
+  
+  .isComment p {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  
+  .elCommentMap {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+  }
+  
+  .tty {
+    flex-basis: calc(50% - 10px); /* Ширина 50%, учитывая отступы между элементами */
+  }
+  
+  .rating {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    padding: 10px;
+  }

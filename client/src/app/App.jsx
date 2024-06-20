@@ -111,6 +111,8 @@ function App() {
                   trails={trails}
                   waupoint={waupoint}
                   reviews={reviews}
+                  setreviews={setreviews}
+                  user={user}
                 />
               }
             />
