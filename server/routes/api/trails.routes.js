@@ -32,7 +32,7 @@ router.post('/', verifyAccessToken , async (req,res)=>{
         const trail = await Trail.create({
             title,
             description,
-            userId
+            userId : user.id
             // userId : user.id
         })
         if (trail) {
