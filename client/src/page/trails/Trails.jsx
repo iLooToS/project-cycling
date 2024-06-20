@@ -1,7 +1,6 @@
 import TrailsItem from "./TrailsItem";
 
 function Trails({ trails, setTrails }) {
-  console.log(trails);
   return (
     <div>
       <h1>Routes Page</h1>

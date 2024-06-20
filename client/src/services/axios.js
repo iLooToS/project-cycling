@@ -3,10 +3,10 @@ let accessToken = '';
 
 const requestAxios = axios.create({
   baseURL: '/api',
+  // baseURL: 'http://localhost:3000/api',
+  withCredentials: true,
   headers: { 'Content-Type': 'application/json' },
 });
-
-console.log(accessToken);
 
 function setAccessToken(token) {
   accessToken = token;

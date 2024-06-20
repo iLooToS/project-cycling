@@ -2,7 +2,6 @@ const router = require('express').Router();
 const { User } = require('../../db/models');
 const bcrypt = require('bcrypt');
 const generateTokens = require('../../utils/authUtils');
-const jwtConfig = require('../../config/jwtConfig');
 
 router.post('/registration', async (req, res) => {
   try {
@@ -32,7 +31,6 @@ router.post('/registration', async (req, res) => {
     if (user) {
       res
         .status(201)
-        //либо пишите ручкамм 'refresh'
         .cookie('refresh', refreshToken, { httpOnly: true })
         .json({ message: 'success', user, accessToken });
       return;
@@ -52,8 +50,7 @@ router.post('/authorization', async (req, res) => {
       return;
     }
     const user = await User.findOne({ where: { email } });
-    if (user) {
-      //                                      
+    if (user) {                                    
       const isCompare = await bcrypt.compare(password, user.password);
       if (isCompare) {
 
@@ -77,8 +74,9 @@ router.post('/authorization', async (req, res) => {
   }
 });
 
-router.get('/logout', (req, res) => {
+router.post('/logout', (req, res) => {
   res.locals.user = undefined;
   res.status(200).clearCookie('refresh').json({ message: 'success' });
 });
+
 module.exports = router;

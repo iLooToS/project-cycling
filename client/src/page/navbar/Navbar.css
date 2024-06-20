@@ -26,3 +26,11 @@
   fill: #3ad1ae;
   text-decoration: none;
 }
+
+.size-6 {
+  width: 20px;
+}
+
+.profile-name {
+  color: rgb(24, 224, 217);
+}

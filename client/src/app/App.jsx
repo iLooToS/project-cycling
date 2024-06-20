@@ -8,33 +8,58 @@ import Main from "../page/main/Main";
 import Trails from "../page/trails/Trails";
 import Registration from "../page/auth/Registration";
 import Authorization from "../page/auth/Authorization";
-const testObj = [
-  {
-    id: 1,
-    title: "Route Name",
-    description: "Route Description",
-    img: "/img/Безымянный.png",
-  },
-  {
-    id: 2,
-    title: "Route Name",
-    description: "Route Description",
-    img: "/img/Безымянный.png",
-  },
-  {
-    id: 3,
-    title: "Route Name",
-    description: "Route Description",
-    img: "/img/Безымянный.png",
-  },
-];
+import requestAxios, { setAccessToken } from "../services/axios";
+// const testObj = [
+//   {
+//     id: 1,
+//     title: "Route Name",
+//     description: "Route Description",
+//     img: "/img/Безымянный.png",
+//   },
+//   {
+//     id: 2,
+//     title: "Route Name",
+//     description: "Route Description",
+//     img: "/img/Безымянный.png",
+//   },
+//   {
+//     id: 3,
+//     title: "Route Name",
+//     description: "Route Description",
+//     img: "/img/Безымянный.png",
+//   },
+// ];
 
 function App() {
   const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState(undefined);
-  const [trails, setTrails] = useState(testObj);
+  const [user, setUser] = useState();
+  const [trails, setTrails] = useState([]);
+
+  const AxiosChekUser = async () => {
+    try {
+      const { data } = await requestAxios.get("/tokens/refresh");
+      if (data.message === "success") {
+        setUser(data.user);
+        setAccessToken(data.accessToken);
+      }
+    } catch (error) {
+      setUser(undefined);
+      setAccessToken(undefined);
+    }
+  };
+
+  const axiosTrails = async () => {
+    const { data } = await requestAxios.get("/trails");
+    console.log(data);
+    if (data.message === "success") {
+      setTrails(data.trails);
+    }
+  };
 
   useEffect(() => {
+    AxiosChekUser();
+    axiosTrails();
+
     const id = setTimeout(() => {
       setLoading(true);
     }, 2000);
@@ -49,6 +74,7 @@ function App() {
       {loading ? (
         <div>
           <Navbar user={user} setUser={setUser} />
+
           <Routes>
             <Route path="/" element={<Main />} />
             <Route
@@ -57,11 +83,11 @@ function App() {
             />
             <Route
               path="/registration"
-              element={<Registration user={user} />}
+              element={<Registration setUser={setUser} />}
             />
             <Route
               path="/authorization"
-              element={<Authorization user={user} />}
+              element={<Authorization setUser={setUser} />}
             />
             <Route path="/routes" element={<MainMap />} />
             <Route path="/map" element={<MainMap />} />
