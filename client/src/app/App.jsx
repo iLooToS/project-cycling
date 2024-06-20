@@ -9,6 +9,7 @@ import Trails from "../page/trails/Trails";
 import Registration from "../page/auth/Registration";
 import Authorization from "../page/auth/Authorization";
 import requestAxios, { setAccessToken } from "../services/axios";
+import TrailPage from "../page/trails/TrailPage";
 // const testObj = [
 //   {
 //     id: 1,
@@ -34,6 +35,15 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState();
   const [trails, setTrails] = useState([]);
+  const [waupoint, setWauPoint] = useState([]);
+  const [reviews, setreviews] = useState([]);
+
+  const AxiosGetReviews = async () => {
+    const { data } = await requestAxios.get(`/reviews`);
+    if (data.message === "success") {
+      setreviews(data.reviewer);
+    }
+  };
 
   const AxiosChekUser = async () => {
     try {
@@ -48,9 +58,15 @@ function App() {
     }
   };
 
+  const AxiosGetWaupoint = async () => {
+    const { data } = await requestAxios.get("/waypoints");
+    if (data.message === "success") {
+      setWauPoint(data.waypoint);
+    }
+  };
+
   const axiosTrails = async () => {
     const { data } = await requestAxios.get("/trails");
-    console.log(data);
     if (data.message === "success") {
       setTrails(data.trails);
     }
@@ -59,6 +75,8 @@ function App() {
   useEffect(() => {
     AxiosChekUser();
     axiosTrails();
+    AxiosGetWaupoint();
+    AxiosGetReviews();
 
     const id = setTimeout(() => {
       setLoading(true);
@@ -68,7 +86,6 @@ function App() {
       clearTimeout(id);
     };
   }, []);
-
   return (
     <>
       {loading ? (
@@ -79,7 +96,23 @@ function App() {
             <Route path="/" element={<Main />} />
             <Route
               path="/trails"
-              element={<Trails trails={trails} setTrails={setTrails} />}
+              element={
+                <Trails
+                  trails={trails}
+                  setTrails={setTrails}
+                  waupoint={waupoint}
+                />
+              }
+            />
+            <Route
+              path="/showTrail/:numberId"
+              element={
+                <TrailPage
+                  trails={trails}
+                  waupoint={waupoint}
+                  reviews={reviews}
+                />
+              }
             />
             <Route
               path="/registration"
@@ -89,8 +122,6 @@ function App() {
               path="/authorization"
               element={<Authorization setUser={setUser} />}
             />
-            <Route path="/routes" element={<MainMap />} />
-            <Route path="/map" element={<MainMap />} />
             <Route
               path="*"
               element={
