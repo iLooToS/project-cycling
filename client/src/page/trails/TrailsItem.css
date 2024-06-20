@@ -1,0 +1,44 @@
+.route-card-image {
+    max-width: 400px;
+    margin-right: 20px;
+}
+
+.route-card-wrapper {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+.route-card-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+}
+
+.route-card-title {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #3ad1ae;
+}
+
+.route-card-description {
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    color: #3ad1ae;
+}
+
+.route-card-button {
+    width: 150px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3ad1ae;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}

@@ -18,7 +18,7 @@
 }
 
 body {
-  background-image: url('../../public/img/header-background_webp.webp');
+  background-image: url('/img/header-background_webp.webp');
   background-repeat: no-repeat;
   background-size: cover;
 }

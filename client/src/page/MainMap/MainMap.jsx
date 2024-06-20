@@ -1,13 +1,8 @@
-import { useMemo, useRef, useState } from "react";
+import { useRef } from "react";
 import "./MainMap.css";
 import {
   YMaps,
   Map,
-  Placemark,
-  RouteButton,
-  RouteEditor,
-  RoutePanel,
-  GeolocationControl,
 } from "@pbe/react-yandex-maps";
 
 function MainMap() {
