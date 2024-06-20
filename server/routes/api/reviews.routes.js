@@ -1,15 +1,17 @@
 const router = require('express').Router();
-const {Trail} = require('../../db/models')
+const {Review} = require('../../db/models')
 
 router.get('/', async (req, res)=>{
     try {
-        const trail = await Trail.findAll()
-        res.status(200).json({ message: 'success', trail })
+        const reviewer = await Review.findAll()
+        res.status(200).json({ message: 'success', reviewer })
     } catch ({message}) {
         res.json({ error: message });
     }
 }
+  
 )
+
 
 
 

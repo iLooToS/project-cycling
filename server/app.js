@@ -1,4 +1,4 @@
-// require('dotenv').config();
+require('dotenv').config();
 const express = require('express');
 const removeHeaders = require('./middleware/removeHeaders');
 const path = require('path');
