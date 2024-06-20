@@ -19,7 +19,6 @@ function Navbar({ user, setUser }) {
       {user && <p className="profile-name">Hello! {user.name}</p>}
       <NavLink className="navbar-link" to="/">Main</NavLink>
       <NavLink className="navbar-link" to="/trails">Routes</NavLink>
-      <NavLink className="navbar-link" to="/map">Map</NavLink>
 
       {user === undefined ? (
         <NavLink className="navbar-link" to="/registration">Registration</NavLink>
