@@ -1,47 +1,79 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import requestAxios, { setAccessToken } from '../../services/axios';
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import requestAxios, { setAccessToken } from "../../services/axios";
+import "./authorization.css";
 
 function Authorization({ setUser }) {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [error, setError] = useState(null);
+  const [email, setEmail] = useState("");
+  const [isEmail, setIsEmail] = useState(false);
+  const [password, setPassword] = useState("");
+  const [isPassword, setIsPassword] = useState(false);
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (email.length > 0) {
+      setIsEmail(false);
+    }
+  }, [email]);
+
+  useEffect(() => {
+    if (password.length > 0) {
+      setIsPassword(false);
+    }
+  }, [password]);
+
   const onHadleSubmit = async (e) => {
     e.preventDefault();
-    const { data } = await requestAxios.post('/auth/authorization', {
-      email,
-      password,
-    });
-    if (data.message === 'success') {
-      setUser(data.user);
-      setAccessToken(data.accessToken);
-      navigate('/');
+    try {
+      if (email.length === 0) {
+        setIsEmail(true);
+      }
+      if (password.length === 0) {
+        setIsPassword(true);
+      }
+      const { data } = await requestAxios.post("/auth/authorization", {
+        email,
+        password,
+      });
+      if (data.message === "success") {
+        setUser(data.user);
+        setAccessToken(data.accessToken);
+        navigate("/");
+      }
+    } catch ({ response }) {
+      console.log(response.data.message);
+      setError(response.data.message);
     }
   };
 
   return (
     <div>
       <h1>Авторизация</h1>
-      <form className='auth' onSubmit={onHadleSubmit}>
-        <label htmlFor='email'>
+      <form className="auth" onSubmit={onHadleSubmit}>
+        <label htmlFor="email">
+          {isEmail && <p className="validation-error">Заполните поле Email!</p>}
           <input
-            type='email'
-            placeholder='alex@mail.ru'
+            type="email"
+            placeholder="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </label>
-        <label htmlFor='password'>
+        <label htmlFor="password">
+          {isPassword && (
+            <p className="validation-error">Заполните поле Password!</p>
+          )}
           <input
-            type='password'
-            placeholder='password'
+            type="password"
+            placeholder="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <button type='submit'>Войти</button>
+        <span>{error && <p>{error}</p>}</span>
+        <button className="auth-submit-button" type="submit">Войти</button>
       </form>
     </div>
   );
