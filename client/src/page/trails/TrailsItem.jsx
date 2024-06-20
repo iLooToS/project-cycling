@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./TrailsItem.css";
 
 function TrailsItem({ trail, setTrails }) {
@@ -8,7 +9,9 @@ function TrailsItem({ trail, setTrails }) {
       <div className="route-card-info">
         <h2 className="route-card-title">{trail.title}</h2>
         <p className="route-card-description">{trail.description}</p>
-        <button className="route-card-button">Details</button>
+        <button className="route-card-button">
+          <Link to={`/trails/${trail.id}`}>Подробнее</Link>
+        </button>
       </div>
     </div>
   );

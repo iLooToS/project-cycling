@@ -1,9 +1,6 @@
 import { useRef } from "react";
 import "./MainMap.css";
-import {
-  YMaps,
-  Map,
-} from "@pbe/react-yandex-maps";
+import { YMaps, Map, Placemark } from "@pbe/react-yandex-maps";
 
 function MainMap() {
   const map = useRef(null);
@@ -13,8 +10,8 @@ function MainMap() {
   };
 
   const addRoute = (ymaps) => {
-    const pointA = [60.327882, 30.327952]; 
-    const pointB = [60.366956, 30.320103]; 
+    const pointA = [60.327882, 30.327952];
+    const pointB = [60.366956, 30.320103];
 
     const multiRoute = new ymaps.multiRouter.MultiRoute(
       {
@@ -22,10 +19,10 @@ function MainMap() {
         params: {
           routingMode: "bicycle",
         },
-      }, 
+      },
       {
         boundsAutoApply: true,
-        zoomMargin: 20
+        zoomMargin: 20,
       }
     );
 
@@ -71,7 +68,16 @@ function MainMap() {
           state={mapState}
           instanceRef={map}
           onLoad={addRoute}
-        ></Map>
+        >
+          <Placemark
+            modules={["geoObject.addon.balloon"]}
+            defaultGeometry={[60.327882, 30.327952]}
+            properties={{
+              balloonContentBody:
+                "This is balloon loaded by the Yandex.Maps API module system",
+            }}
+          />
+        </Map>
       </YMaps>
     </div>
   );
