@@ -4,9 +4,7 @@ const { User } = require('../db/models');
 async function verifyRefreshToken(req, res, next) {
   try {
     const { refresh } = req.cookies;
-    console.log(refresh);
     let { user } = jwt.verify(refresh, process.env.REFRESH_TOKEN);
-    console.log(123);
    
     user = await User.findOne({
       where: { id: user.id },
@@ -17,7 +15,7 @@ async function verifyRefreshToken(req, res, next) {
 
     next();
   } catch (error) {
-    console.log('Invalid refresh token');
+    console.log('Invalid refresh token', {message: error});
     res.clearCookie('refreshToken').sendStatus(401);
   }
 }

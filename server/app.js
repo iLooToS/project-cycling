@@ -3,10 +3,12 @@ const express = require('express');
 const removeHeaders = require('./middleware/removeHeaders');
 const path = require('path');
 const app = express();
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
-// const PORT = process.env.PORT || 3000;
-const PORT = 3000
+const PORT = process.env.PORT || 3000;
+// const PORT = 3000
 
+app.use(cors({ credentials: true, origin: ['http://localhost:5173'] }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(removeHeaders);

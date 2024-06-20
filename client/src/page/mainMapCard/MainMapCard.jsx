@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import "./MainMap.css";
+import "./MainMapCard.css";
 import { YMaps, Map } from "@pbe/react-yandex-maps";
 
-function MainMap({ waypoint, setWaypoint }) {
-  const [pointA1, setPointA1] = useState(waypoint[0].latitude);
-  const [pointA2, setPointA2] = useState(waypoint[0].longitude);
-  const [pointB1, setPointB1] = useState(waypoint[1].latitude);
-  const [pointB2, setPointB2] = useState(waypoint[1].longitude);
+function MainMap({ waupointCard }) {
+  const [pointA1, setPointA1] = useState(waupointCard[0].latitude);
+  const [pointA2, setPointA2] = useState(waupointCard[0].longitude);
+  const [pointB1, setPointB1] = useState(waupointCard[1].latitude);
+  const [pointB2, setPointB2] = useState(waupointCard[1].longitude);
 
   const map = useRef(null);
   const mapState = {

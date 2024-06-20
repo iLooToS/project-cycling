@@ -3,28 +3,6 @@ const {Trail} = require('../../db/models')
 const verifyAccessToken = require('../../middleware/verifyAccessToken')
 require('dotenv').config();
 
-router.get('/', async (req, res)=>{
-    try {
-        const trails = await Trail.findAll()
-        res.status(200).json({ message: 'success', trails})
-    } catch ({message}) {
-        res.json({ error: message });
-    }
-}
-)
-
-router.get('/:trailId', async (req, res)=>{
-    try {
-        const {trailId} =  req.params
-        console.log(trailId)
-        const trail = await Trail.findOne({where: { id : trailId}})
-        res.status(200).json({ message: 'success', trail })
-    } catch ({ message }) {
-        res.json({ error: message });
-      }
-})
-
-
 router.post('/', verifyAccessToken , async (req,res)=>{
     try {
         const user = res.locals
@@ -32,8 +10,7 @@ router.post('/', verifyAccessToken , async (req,res)=>{
         const trail = await Trail.create({
             title,
             description,
-            userId
-            // userId : user.id
+            userId : user.id
         })
         if (trail) {
             res.status(200).json({ message: 'success', trail });
@@ -46,8 +23,6 @@ router.post('/', verifyAccessToken , async (req,res)=>{
         }
     
 })
-
-
 
 router.delete('/' , verifyAccessToken, async (req, res)=>{
 try {
@@ -70,7 +45,23 @@ try {
   }
 });
 
+router.get("/", async (req, res) => {
+  try {
+    const trails = await Trail.findAll();
+    res.status(200).json({ message: "success", trails });
+  } catch ({ message }) {
+    res.json({ error: message });
+  }
+});
 
+router.get('/:trailId', async (req, res) => {
+    try {
+      const { trailId } = req.params;
+      const trail = await Trail.findOne({ where: { id: trailId } });
+      res.status(200).json({ message: 'success', trail });
+    } catch ({ message }) {
+      res.json({ error: message });
+    }
+  });
 
-
-module.exports = router
+module.exports = router;
