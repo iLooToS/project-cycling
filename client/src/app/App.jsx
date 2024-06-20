@@ -1,4 +1,5 @@
 import "./App.css";
+import { Route, Routes } from 'react-router-dom';
 import { Loader } from "../ui/Loader/Loader";
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
@@ -47,8 +48,11 @@ function App() {
         <div>
           <Navbar />
           <Routes>
-            <Route path="/" element={<Main />} />
+          <Route path="/" element={<Main />} />
             <Route path="/trails" element={<Trails trails={trails} setTrails={setTrails} />} />
+              <Route path='/registration' user={user} />
+          <Route path='/authorization' user={user} />
+          <Route path="/routes" element={<MainMap />} />
             <Route path="/map" element={<MainMap />} />
             <Route
               path="*"
