@@ -1,0 +1,28 @@
+.Navbar {
+  width: 100%;
+  height: 50px;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 15px;
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 80px;
+  background: rgb(0, 0, 0, 70%);
+  z-index: 3;
+}
+
+.navbar-link {
+  color: rgb(255, 255, 255);
+  fill: #3ad1ae;
+}
+
+.active {
+  color: rgb(24, 224, 217);
+  fill: #3ad1ae;
+  text-decoration: none;
+}
