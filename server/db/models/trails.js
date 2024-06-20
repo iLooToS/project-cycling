@@ -2,18 +2,17 @@
 const {
   Model
 } = require('sequelize');
-const waypoint = require('./waypoint');
 module.exports = (sequelize, DataTypes) => {
-  class Route extends Model {
+  class Trail extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({User, Review, Waypoint}) {
+    static associate({User,Waypoint, Review}) {
       this.belongsTo(User, { foreignKey: 'userId' });
-      this.belongsTo(Waypoint, {foreignKey:'routeId'})
-      this.hasMany(Review, {foreignKey: 'routId'} )
+      this.hasMany(Waypoint, {foreignKey:'trailId'})
+      this.hasMany(Review, {foreignKey: 'trailId'} )
 
 
       
@@ -21,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Route.init({
+  Trail.init({
     title: {
       type: DataTypes.TEXT
     },
@@ -40,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    modelName: 'Route',
+    modelName: 'Trail',
   });
-  return Route;
+  return Trail;
 };

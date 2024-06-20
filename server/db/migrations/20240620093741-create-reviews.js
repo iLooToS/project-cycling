@@ -24,11 +24,11 @@ module.exports = {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
       },
-      routeId: {
+      trailId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'Routes',
+          model: 'Trails',
           key: 'id',
         },
         onDelete: 'CASCADE',
