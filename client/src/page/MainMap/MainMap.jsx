@@ -1,8 +1,22 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./MainMap.css";
-import { YMaps, Map, Placemark } from "@pbe/react-yandex-maps";
+import { YMaps, Map } from "@pbe/react-yandex-maps";
+import requestAxios from "../../services/axios";
 
-function MainMap() {
+function MainMap({waypoint, setWaypoint}) {
+const [point, setPoint] = useState([]);
+  const axiosTrailsCard = async () => {
+    const { data } = await requestAxios.get(`/waypoints/1`);
+    setPoint(data.trails)
+  };
+
+  useEffect(() => {
+    axiosTrailsCard();
+  }, []);
+
+console.log(point[0].latitude);
+console.log(point[0].longitude);
+
   const map = useRef(null);
   const mapState = {
     center: [55.739625, 37.5412],
@@ -69,14 +83,14 @@ function MainMap() {
           instanceRef={map}
           onLoad={addRoute}
         >
-          <Placemark
+          {/* <Placemark
             modules={["geoObject.addon.balloon"]}
             defaultGeometry={[60.327882, 30.327952]}
             properties={{
               balloonContentBody:
                 "This is balloon loaded by the Yandex.Maps API module system",
             }}
-          />
+          /> */}
         </Map>
       </YMaps>
     </div>
