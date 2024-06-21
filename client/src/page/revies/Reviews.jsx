@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import requestAxios from "../../services/axios";
 import { createRef, useRef, useState } from "react";
 
-function Reviews({ user, setreviews, numberId}) {
+function Reviews({ user, setreviews, numberId, setAddComment, addComment}) {
     const [comment, setComment] = useState('');
     let texyInput = useRef(null)
   
@@ -19,6 +19,7 @@ function Reviews({ user, setreviews, numberId}) {
       if (data.message === 'success') {
         setreviews((prev) => [...prev, data.review]);
         setComment('');
+        setAddComment(false);
       }
     };
   
