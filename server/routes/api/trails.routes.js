@@ -51,7 +51,7 @@ router.post("/", verifyAccessToken, async (req, res) => {
   }
 });
 
-router.delete("/", verifyAccessToken, async (req, res) => {
+router.delete("/:trailId", verifyAccessToken, async (req, res) => {
   try {
     const { user } = res.locals;
     const { trailId } = req.params;
