@@ -83,6 +83,7 @@ function App() {
                   trails={trails}
                   setTrails={setTrails}
                   waupoint={waupoint}
+                  user = {user}
                 />
               }
             />
