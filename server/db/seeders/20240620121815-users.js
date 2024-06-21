@@ -8,22 +8,15 @@ module.exports = {
       [
         {
           name: 'Misha',
-          email: 'mi@ru',
+          email: 'misha@mail.ru',
           password: 'misha',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           name: 'Olenka',
-          email: 'ol@ru',
+          email: 'olenka@mail.ru',
           password: 'olenka',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          name: 'Kat',
-          email: 'k@ru',
-          password: 'kat',
           createdAt: new Date(),
           updatedAt: new Date(),
         },

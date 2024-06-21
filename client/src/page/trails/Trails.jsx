@@ -1,5 +1,5 @@
 import TrailsItem from "./TrailsItem";
-import './Trails.css';
+import "./Trails.css";
 
 function Trails({ user, trails, setTrails, waupoint }) {
   return (
@@ -8,7 +8,13 @@ function Trails({ user, trails, setTrails, waupoint }) {
       <div className="routes-wrapper">
         {trails &&
           trails.map((trail) => (
-            <TrailsItem key={trail.id} user={user} trail={trail} setTrails={setTrails} waupoint={waupoint} />
+            <TrailsItem
+              key={trail.id}
+              user={user}
+              trail={trail}
+              setTrails={setTrails}
+              waupoint={waupoint}
+            />
           ))}
       </div>
     </div>

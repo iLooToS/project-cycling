@@ -13,6 +13,10 @@
 .route-card-info {
     display: flex;
     flex-direction: column;
+    background-color: rgba(4, 36, 41, 0.7);
+    border-radius: 20px;
+    max-width: 500px;
+    min-height: 300px;
     margin-left: 30px;
 }
 
@@ -49,15 +53,16 @@
     height: 50px;
     border: none;
     border-radius: 5px;
-    background-color: red;
+    background-color: rgb(206, 0, 0);
     color: white;
     font-size: 20px;
     font-weight: 600;
     cursor: pointer;
     margin-top: 10px;
+    transition: background-color 0.3s ease;
   }
 
-  .route-card-button-delete :hover {
-    background-color: #0056b3;
+  .route-card-button-delete:hover {
+    background-color: #b31500;
   }
   
