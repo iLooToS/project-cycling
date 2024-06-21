@@ -22,5 +22,5 @@ router.get('/:reviewerId', async (req, res) => {
   
 )
 
-
+module.exports = router
 
