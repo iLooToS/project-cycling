@@ -14,14 +14,13 @@ function TrailPage({ trails, waupoint, reviews, setreviews, user }) {
   let isCommented;
   if (user) {
     isCommented = reviews.find((el) => el.userId === user.id);
-  }
+}
+    useEffect(() => {
+      if (isCommented) {
+        setAddComment(false);
+      }
+    }, []);
 
-  useEffect(() => {
-    if (isCommented) {
-      setAddComment(false);
-    }
-  }, []);
-  
   const onHandleDelite = async () => {
     const { data } = await requestAxios.delete(`/reviews/${reviews.commentId}`);
 
