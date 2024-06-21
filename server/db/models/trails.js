@@ -18,9 +18,11 @@ module.exports = (sequelize, DataTypes) => {
   Trail.init(
     {
       title: {
+        allowNull: false,
         type: DataTypes.TEXT,
       },
       description: {
+        allowNull: false,
         type: DataTypes.TEXT,
       },
       userId: {

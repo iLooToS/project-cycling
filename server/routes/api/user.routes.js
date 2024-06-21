@@ -23,4 +23,5 @@ router.get('/:userId', async (req, res) => {
       res.json({ error: message });
     }
   })
+
 module.exports = router
