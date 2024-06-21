@@ -7,20 +7,28 @@ import Reviews from "../revies/Reviews";
 
 function TrailPage({ trails, waupoint, reviews, setreviews, user }) {
   const { numberId } = useParams();
-  const navigate = useNavigate()
-  const {commentId} = useParams()
+  const navigate = useNavigate();
+  const {commentId} = useParams();
+  const [addComment, setAddComment] = useState(true);
 
 
   // const users =  reviews.find((el) => +el.userId === +user.id)
   //   console.log(review);
   //   console.log(reviews);
   //   console.log(user);
-    
+    const isCommented = reviews.find((el) => el.userId === user.id);
+    console.log(isCommented);
+    useEffect(() => {
+      if (isCommented) {
+        setAddComment(false);
+      }
+    }, [])
   const onHandleDelite = async () => {
         const {data} = await requestAxios.delete(`/reviews/${reviews.commentId}`)
        
         if(data.message === 'success') {
           setreviews((prev) => prev.filter((delReview) => delReview.userId !== user.id));
+          setAddComment(true);
         }
   }
 
@@ -33,7 +41,6 @@ const resultReview = reviews.filter((el) => el.trailId === +numberId)
 //   console.log(waupointCard);
 let count = 0
 const sumRating = resultReview.map(el => count+= el.rating)
-  console.log(resultReview[0].comment);
   return (
       <div className="isTrailPage">
         <div className="button1">
@@ -48,7 +55,7 @@ const sumRating = resultReview.map(el => count+= el.rating)
               resultReview.map((el, index) => (
                 <div className="elCommentMap" key={index}>
                   <p className="commentText">{el.comment}</p>
-                  <button type='button' onClick={onHandleDelite}>Удалить</button>
+                  {user && user.id === el.userId && <button  type='button' onClick={onHandleDelite}>Удалить</button>}
                 </div>
               ))}
           </div>
@@ -57,7 +64,7 @@ const sumRating = resultReview.map(el => count+= el.rating)
           </div>
         </div>
         <div>
-        <Reviews setreviews={setreviews} user={user} numberId={numberId}/>
+        { addComment && <Reviews setreviews={setreviews} user={user} numberId={numberId} addComment={addComment} setAddComment={setAddComment}/>}
         </div>
         <div className="rating">Рейтинг: {count}</div>
       </div>
