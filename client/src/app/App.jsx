@@ -10,26 +10,7 @@ import Registration from "../page/auth/Registration";
 import Authorization from "../page/auth/Authorization";
 import requestAxios, { setAccessToken } from "../services/axios";
 import TrailPage from "../page/trails/TrailPage";
-// const testObj = [
-//   {
-//     id: 1,
-//     title: "Route Name",
-//     description: "Route Description",
-//     img: "/img/Безымянный.png",
-//   },
-//   {
-//     id: 2,
-//     title: "Route Name",
-//     description: "Route Description",
-//     img: "/img/Безымянный.png",
-//   },
-//   {
-//     id: 3,
-//     title: "Route Name",
-//     description: "Route Description",
-//     img: "/img/Безымянный.png",
-//   },
-// ];
+import PersonalAccount from "../page/personalAccount/PersonalAccount";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -94,6 +75,7 @@ function App() {
 
           <Routes>
             <Route path="/" element={<Main />} />
+            <Route path="/account" element={<PersonalAccount setWauPoint={setWauPoint} setTrails={setTrails} user={user} />} />
             <Route
               path="/trails"
               element={

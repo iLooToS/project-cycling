@@ -77,7 +77,7 @@ function Registration({ setUser }) {
         }
         return;
       }
-      setError("Пароли не совпадают");
+      setError("The passwords don't match");
       return;
     } catch ({ response }) {
       setError(response.data.message);
@@ -89,51 +89,65 @@ function Registration({ setUser }) {
 
   return (
     <div>
-      <h1>Регистрация</h1>
+      <h1 className="registration-page-text">Registration</h1>
       <form className="auth" onSubmit={onHandleSubmit}>
-        <label htmlFor="name">
-        {isName && <p className="validation-error">Заполните поле Name!</p>}
+        <label htmlFor="name" className="registration-label">
+          {isName && (
+            <p className="validation-error">Fill in the Name field!</p>
+          )}
           <input
+            className="registration-input"
             type="text"
             placeholder="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </label>
-        <label htmlFor="email">
-        {isEmail && <p className="validation-error">Заполните поле Email!</p>}
+        <label htmlFor="email" className="registration-label">
+          {isEmail && (
+            <p className="validation-error">Fill in the Email field!</p>
+          )}
           <input
+            className="registration-input"
             type="email"
             placeholder="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </label>
-        <label htmlFor="password">
-        {isPassword && (
-            <p className="validation-error">Заполните поле Password!</p>
+        <label className="registration-label" htmlFor="password">
+          {isPassword && (
+            <p className="validation-error">Fill in the Password field!</p>
           )}
           <input
+            className="registration-input"
             type="password"
-            placeholder="пароль"
+            placeholder="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <label htmlFor="password">
-        {isCPassword && (
-            <p className="validation-error">Заполните поле Check Password!</p>
+        <label htmlFor="password" className="registration-label">
+          {isCPassword && (
+            <p className="validation-error">
+              Complete the Check Password field!
+            </p>
           )}
           <input
+            className="registration-input"
             type="password"
-            placeholder="повторите пароль"
+            placeholder="check the password"
             value={cpassword}
             onChange={(e) => setCPassword(e.target.value)}
           />
         </label>
-        {match && <p className="validation-error">Пароли не совпадают!</p>}
-        <span>{error && <p>{error}</p>}</span>
-        <button className="register-submit-button" type="submit">Зарегистрироваться</button>
+        {match && (
+          <p className="validation-error">The passwords don't match!</p>
+        )}
+        {error && <p>{error}</p>}
+        <button className="register-submit-button" type="submit">
+          Зарегистрироваться
+        </button>
       </form>
     </div>
   );

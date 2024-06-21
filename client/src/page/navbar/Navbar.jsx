@@ -17,21 +17,31 @@ function Navbar({ user, setUser }) {
   return (
     <nav className="Navbar">
       {user && <p className="profile-name">Hello! {user.name}</p>}
-      <NavLink className="navbar-link" to="/">Main</NavLink>
-      <NavLink className="navbar-link" to="/trails">Routes</NavLink>
-
+      {user && <NavLink className="navbar-link" to="/account">
+        Account
+      </NavLink>}
+      <NavLink className="navbar-link" to="/">
+        Main
+      </NavLink>
+      <NavLink className="navbar-link" to="/trails">
+        Routes
+      </NavLink>
       {user === undefined ? (
-        <NavLink className="navbar-link" to="/registration">Registration</NavLink>
+        <NavLink className="navbar-link" to="/registration">
+          Registration
+        </NavLink>
       ) : (
         <></>
       )}
       {user === undefined ? (
-        <NavLink className="navbar-link" to="/authorization">Authorization</NavLink>
+        <NavLink className="navbar-link" to="/authorization">
+          Authorization
+        </NavLink>
       ) : (
         <></>
       )}
       {user !== undefined ? (
-        <NavLink  className="navbar-link" onClick={onHandleLogout}>
+        <NavLink className="navbar-link" onClick={onHandleLogout}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -55,4 +65,4 @@ function Navbar({ user, setUser }) {
   );
 }
 
-export default Navbar
+export default Navbar;

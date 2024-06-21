@@ -8,7 +8,7 @@ router.post('/registration', async (req, res) => {
     const { name, email, password } = req.body;
 
     if (name.trim() === '' || email.trim() === '' || password.trim() === '') {
-      res.status(400).json({ message: 'заполните все поля' });
+      res.status(400).json({ message: 'Complete all fields' });
       return;
     }
 
@@ -17,7 +17,7 @@ router.post('/registration', async (req, res) => {
     if (userInDb) {
       res
         .status(400)
-        .json({ message: 'Такой пользователь уже зарегестрирован' });
+        .json({ message: 'This user is already registered' });
       return;
     }
     const hashPassword = await bcrypt.hash(password, 10);
@@ -36,7 +36,7 @@ router.post('/registration', async (req, res) => {
       return;
     }
 
-    res.status(400).json({ message: 'Повторите попытку' });
+    res.status(400).json({ message: 'Try again' });
   } catch ({ message }) {
     res.status(500).json({ error: message });
   }
@@ -46,7 +46,7 @@ router.post('/authorization', async (req, res) => {
   try {
     const { email, password } = req.body;
     if (email.trim() === '' || password.trim() === '') {
-      res.status(400).json({ message: 'заполните все поля' });
+      res.status(400).json({ message: 'Fill in all fields' });
       return;
     }
     const user = await User.findOne({ where: { email } });
@@ -64,11 +64,11 @@ router.post('/authorization', async (req, res) => {
           .json({ message: 'success', accessToken, user });
         return;
       }
-      res.status(400).json({ message: 'email или пароль не совпадают' });
+      res.status(400).json({ message: 'Email or password does not match' });
       return;
     }
 
-    res.status(400).json({ message: 'email или пароль не совпадают' });
+    res.status(400).json({ message: 'Email or password does not match' });
   } catch ({ message }) {
     res.status(500).json({ error: message });
   }
