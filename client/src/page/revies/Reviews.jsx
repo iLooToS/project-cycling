@@ -9,7 +9,9 @@ function Reviews({ user, setreviews, numberId, setAddComment, addComment}) {
     
     const onHandleSubmit = async (e) => {
       e.preventDefault();
-      
+
+
+
       const { data } = await requestAxios.post('/reviews', {
         trailId: numberId,
         userId: user.id,
@@ -35,9 +37,9 @@ function Reviews({ user, setreviews, numberId, setAddComment, addComment}) {
           onChange={(e) => setComment(e.target.value)}
         />
         <div className="reviews-submit-button-wrapper">
-          <button className="reviews-submit-button" type="submit">
+        {comment === '' ? (null) : (<button className="reviews-submit-button" type="submit">
             Submit
-          </button>
+          </button>)}
         </div>
       </form>
     </div>
