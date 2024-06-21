@@ -12,15 +12,17 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get('/:trailId', async (req, res) => {
+router.get('/:reviewerId', async (req, res) => {
     try {
-      const { trailId } = req.params;
-      const reviews = await Review.findAll({ where: { trailId: trailId } });
+      const { revieweId } = req.params;
+      const reviews = await Review.findAll({ where: { id: revieweId } });
       res.status(200).json({ message: 'success', reviews });
     } catch ({ message }) {
       res.json({ error: message });
     }
-  });
+}
+  
+)
 
   router.post('/', verifyAccessToken, async (req, res) => {
     try {
@@ -88,7 +90,5 @@ router.get('/:trailId', async (req, res) => {
       res.status(500).json({ error: message });
     }
   });
-
-
 
 module.exports = router;
