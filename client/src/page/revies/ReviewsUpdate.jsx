@@ -1,8 +1,7 @@
-import { useParams } from "react-router-dom";
-import requestAxios from "../../services/axios";
-import { createRef, useRef, useState } from "react";
+import React, { useRef, useState } from'react';
+import requestAxios from '../../services/axios';
 
-function Reviews({ user, setreviews, numberId}) {
+function ReviewsUpdate({ title }) {
     const [comment, setComment] = useState('');
     let texyInput = useRef(null)
   
@@ -15,7 +14,9 @@ function Reviews({ user, setreviews, numberId}) {
         comment: texyInput.current.value,
       });
 
-      
+      if(texyInput.current.value === '') {
+        return
+      }
       if (data.message === 'success') {
         setreviews((prev) => [...prev, data.review]);
         setComment('');
@@ -33,10 +34,11 @@ function Reviews({ user, setreviews, numberId}) {
           value={comment}
           onChange={(e) => setComment(e.target.value)}
         />
-         <button type='submit'>создать</button>
+         {comment === '' ? (null) :(<button type='submit'>создать</button>)}
         </form>
       </div>
     );
-  }
-  
-  export default Reviews;
+}
+
+
+export default ReviewsUpdate;
