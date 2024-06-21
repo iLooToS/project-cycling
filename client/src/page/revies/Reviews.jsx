@@ -34,13 +34,14 @@ function Reviews({ user, setreviews, numberId, setAddComment, addComment}) {
       <h1 className="comment-page-text">Comment</h1>
       <form onSubmit={onHandleSubmit}>
         <input
+        className="account-input"
           type="text"
           ref={texyInput}
           placeholder="Comment"
           value={comment}
           onChange={(e) => setComment(e.target.value)}
         />
-        <label htmlFor="pet-select">Choose a pet:</label>
+        <label className='rate-input' htmlFor="pet-select">Rate the trail:</label>
         <select
         id="rating-select"
             value={rating}

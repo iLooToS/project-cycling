@@ -18,7 +18,7 @@ module.exports = {
           rating: 2,
           comment:'Всей компанией рекомендуем этот маршрут, местные виды просто восхитительны!',
           userId: 2,
-          trailId: 2,
+          trailId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },

@@ -1,24 +1,28 @@
 .comment-page-text {
-color: black;
+  color: black;
 }
 
 .reviews-submit-button-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .reviews-submit-button {
-    background-color: #008000;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  background-color: #008000;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .reviews-submit-button:hover {
-    background-color: #0056b3;
-  }
+  background-color: #0056b3;
+}
+
+.rate-input {
+    color: white;
+}
