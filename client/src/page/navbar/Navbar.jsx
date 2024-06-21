@@ -7,7 +7,6 @@ function Navbar({ user, setUser }) {
 
   const onHandleLogout = async () => {
     const res = await requestAxios.post("/auth/logout");
-    
     if (res.status === 200) {
       setUser(undefined);
       setAccessToken(undefined);

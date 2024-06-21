@@ -8,30 +8,29 @@ import Reviews from "../revies/Reviews";
 function TrailPage({ trails, waupoint, reviews, setreviews, user }) {
   const { numberId } = useParams();
   const navigate = useNavigate();
-
+  
   const [addComment, setAddComment] = useState(true);
+  
   let isCommented;
 if (user) {
     isCommented = reviews.find((el) => el.userId === user.id);
 }
+  
 
-
-  useEffect(() => {
-    if (isCommented) {
-      setAddComment(false);
-    }
-  }, []);
-
+    const isCommented = reviews.find((el) => el.userId === user.id);
+    useEffect(() => {
+      if (isCommented) {
+        setAddComment(false);
+      }
+    }, []);
   const onHandleDelite = async () => {
-    const { data } = await requestAxios.delete(`/reviews/${reviews.commentId}`);
-
-    if (data.message === "success") {
-      setreviews((prev) =>
-        prev.filter((delReview) => delReview.userId !== user.id)
-      );
-      setAddComment(true);
-    }
-  };
+        const {data} = await requestAxios.delete(`/reviews/${reviews.commentId}`)
+       
+        if(data.message === 'success') {
+          setreviews((prev) => prev.filter((delReview) => delReview.userId !== user.id));
+          setAddComment(true);
+        }
+  }
 
   const resultReview = reviews.filter((el) => el.trailId === +numberId);
   const trail = trails.find((el) => el.id === +numberId);

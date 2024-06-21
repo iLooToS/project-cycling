@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import "./PersonalAccount.css";
 import requestAxios from "../../services/axios";
+import PersonalAccountUpdate from "./PersonalAccountUpdate";
 
-function PersonalAccount({ user, setWauPoint, setTrails }) {
+function PersonalAccount({ user, setWauPoint, setTrails, setUser }) {
   const [error, setError] = useState(null);
 
   const [title, setTitle] = useState("");
@@ -22,6 +23,8 @@ function PersonalAccount({ user, setWauPoint, setTrails }) {
 
   const [secondPointLongitude, setSecondPointLongitude] = useState("");
   // const [issecondPointLongitude, issetSecondPointLongitude] = useState(false);
+
+  const [gettrue, setGetTrue] = useState(true)
 
   useEffect(() => {
     if (title.length > 0) {
@@ -126,13 +129,14 @@ function PersonalAccount({ user, setWauPoint, setTrails }) {
             alt="accountPhoto"
           />
         </div>
-        <div className="account-info-wrapper">
+          {gettrue && user ? 
+          (<div className="account-info-wrapper">
           <h2 className="account-name">User Name: {user.name}</h2>
           <p className="account-email">Email: {user.email}</p>
-          <button className="account-change-info" type="button">
+           <button onClick={() => setGetTrue(prev => !prev)} className="account-change-info" type="button">
             Change information
           </button>
-        </div>
+          </div>) : (<PersonalAccountUpdate setGetTrue={setGetTrue} user={user} setUser={setUser}/>)}
       </div>
       <div>
         <h1 className="account-page-text">Create Route</h1>
