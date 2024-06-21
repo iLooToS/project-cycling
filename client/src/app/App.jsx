@@ -75,7 +75,7 @@ function App() {
 
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/account" element={<PersonalAccount setWauPoint={setWauPoint} setTrails={setTrails} user={user} />} />
+            <Route path="/account" element={<PersonalAccount setWauPoint={setWauPoint} setTrails={setTrails} user={user} setUser={setUser} />} />
             <Route
               path="/trails"
               element={

@@ -9,12 +9,14 @@ function Reviews({ user, setreviews, numberId, setAddComment, addComment}) {
     
     const onHandleSubmit = async (e) => {
       e.preventDefault();
+      console.log(user);
+      
       const { data } = await requestAxios.post('/reviews', {
         trailId: numberId,
         userId: user.id,
         comment: texyInput.current.value,
       });
-
+console.log(data);
       
       if (data.message === 'success') {
         setreviews((prev) => [...prev, data.review]);

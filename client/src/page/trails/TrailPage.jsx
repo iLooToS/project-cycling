@@ -17,7 +17,6 @@ function TrailPage({ trails, waupoint, reviews, setreviews, user }) {
   //   console.log(reviews);
   //   console.log(user);
     const isCommented = reviews.find((el) => el.userId === user.id);
-    console.log(isCommented);
     useEffect(() => {
       if (isCommented) {
         setAddComment(false);
