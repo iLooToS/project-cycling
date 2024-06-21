@@ -50,22 +50,24 @@ function Authorization({ setUser }) {
 
   return (
     <div>
-      <h1>Авторизация</h1>
+      <h1 className="authorization-page-text">Authorization</h1>
       <form className="auth" onSubmit={onHadleSubmit}>
-        <label htmlFor="email">
-          {isEmail && <p className="validation-error">Заполните поле Email!</p>}
+        <label htmlFor="email" className="authorization-label">
+          {isEmail && <p className="validation-error">Fill in the field Email!</p>}
           <input
+          className="authorization-input"
             type="email"
             placeholder="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </label>
-        <label htmlFor="password">
+        <label htmlFor="password" className="authorization-label">
           {isPassword && (
-            <p className="validation-error">Заполните поле Password!</p>
+            <p className="validation-error">Fill in the field Password!</p>
           )}
           <input
+          className="authorization-input"
             type="password"
             placeholder="password"
             value={password}
@@ -73,7 +75,7 @@ function Authorization({ setUser }) {
           />
         </label>
         <span>{error && <p>{error}</p>}</span>
-        <button className="auth-submit-button" type="submit">Войти</button>
+        <button className="auth-submit-button" type="submit">Enter</button>
       </form>
     </div>
   );

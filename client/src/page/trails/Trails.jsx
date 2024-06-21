@@ -1,9 +1,10 @@
 import TrailsItem from "./TrailsItem";
+import './Trails.css';
 
 function Trails({ trails, setTrails, waupoint }) {
   return (
     <div>
-      <h1>Routes Page</h1>
+      <h1 className="route-page-text">Routes Page</h1>
       <div className="routes-wrapper">
         {trails &&
           trails.map((trail) => (

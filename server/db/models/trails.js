@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Trail extends Model {
     /**
@@ -9,37 +7,37 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({User,Waypoint, Review}) {
-      this.belongsTo(User, { foreignKey: 'userId' });
-      this.hasMany(Waypoint, {foreignKey:'trailId'})
-      this.hasMany(Review, {foreignKey: 'trailId'} )
-
-
-      
+    static associate({ User, Waypoint, Review }) {
+      this.belongsTo(User, { foreignKey: "userId" });
+      this.hasMany(Waypoint, { foreignKey: "trailId" });
+      this.hasMany(Review, { foreignKey: "trailId" });
 
       // define association here
     }
   }
-  Trail.init({
-    title: {
-      type: DataTypes.TEXT
-    },
-    description: {
-      type: DataTypes.TEXT
-    },
-    userId: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'Users',
-        key: 'id',
+  Trail.init(
+    {
+      title: {
+        type: DataTypes.TEXT,
       },
-      onDelete: 'CASCADE',
-      onUpdate: 'CASCADE',
+      description: {
+        type: DataTypes.TEXT,
+      },
+      userId: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        references: {
+          model: "Users",
+          key: "id",
+        },
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
+      },
+    },
+    {
+      sequelize,
+      modelName: "Trail",
     }
-  }, {
-    sequelize,
-    modelName: 'Trail',
-  });
+  );
   return Trail;
 };

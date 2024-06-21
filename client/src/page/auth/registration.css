@@ -1,6 +1,7 @@
 .validation-error {
-  font-size: 12px;
-  color: red;
+  font-size: 15px;
+  font-weight: bold;
+  color: rgba(255, 0, 0, 0.795);
 }
 
 .register-submit-button {
@@ -12,4 +13,31 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.registration-page-text {
+  color: rgb(24, 224, 217);
+}
+
+.registration-label {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.registration-input {
+  display: block;
+  width: 100%;
+  height: calc(2.25rem + 2px);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #bdbdbd;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
