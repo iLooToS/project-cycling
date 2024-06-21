@@ -69,6 +69,11 @@
   cursor: pointer;
   align-items: center;
   justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.account-submit-button:hover {
+  background-color: #0056b3;
 }
 
 .latitude-longitude-wrapper {
