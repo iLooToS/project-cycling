@@ -27,11 +27,12 @@ router.get('/:reviewerId', async (req, res) => {
   router.post('/', verifyAccessToken, async (req, res) => {
     try {
       const { user } = res.locals;
-      const { trailId, userId, comment  } = req.body;
+      const { trailId, userId, rating, comment  } = req.body;
   
       const review = await Review.create({
         trailId,
         userId: user.id,
+        rating,
         comment,
       });
   
@@ -70,7 +71,7 @@ router.get('/:reviewerId', async (req, res) => {
     try {
       const { user } = res.locals;
       const { commentId } = req.params;
-      const { trailId, userId, comment } = req.body;
+      const { trailId, userId,  comment } = req.body;
   
       // возращает массив с числом
       const result = await Movie.update(
