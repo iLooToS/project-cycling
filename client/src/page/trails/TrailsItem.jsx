@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./TrailsItem.css";
 import requestAxios from "../../services/axios";
 import { useEffect, useState } from "react";
-import MainMap from "../MainMap/MainMap";
+import MainMap from "../mainMap/MainMap";
 
 function TrailsItem({ trail, setTrails, waupoint }) {
   const result = waupoint.filter((el) => el.trailId === trail.id);
