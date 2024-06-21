@@ -14,8 +14,14 @@ router.get('/', async (req, res)=>{
 
 
 
-
-
-
-
+router.get('/:userId', async (req, res) => {
+    try {
+      const { userId } = req.params;
+      const user = await User.findOne({ where: { id: userId } });
+      res.status(200).json({ message: 'success', user });
+    } catch ({ message }) {
+      res.json({ error: message });
+    }
+  })
+r
 module.exports = router
