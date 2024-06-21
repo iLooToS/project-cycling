@@ -19,6 +19,6 @@ router.get('/:userId', async (req, res) => {
     } catch ({ message }) {
       res.json({ error: message });
     }
-  });
+  })
 r
 module.exports = router
