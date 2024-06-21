@@ -10,9 +10,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       title: {
+        allowNull: false,
         type: Sequelize.TEXT
       },
       description: {
+        allowNull: false,
         type: Sequelize.TEXT
       },    userId: {
         allowNull: false,
