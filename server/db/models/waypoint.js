@@ -16,12 +16,15 @@ module.exports = (sequelize, DataTypes) => {
   }
   Waypoint.init({
     latitude: {
+      allowNull: false,
       type: DataTypes.FLOAT
     },
     longitude: {
+      allowNull: false,
       type: DataTypes.FLOAT
     },
     sequence: {
+      allowNull: false,
       type: DataTypes.INTEGER
     }, 
     trailId: {

@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Waypoint } = require("../../db/models");
+const verifyAccessToken = require("../../middleware/verifyAccessToken");
 
 router.get("/", async (req, res) => {
   try {

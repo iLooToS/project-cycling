@@ -10,12 +10,15 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       latitude: {
+        allowNull: false,
         type: Sequelize.FLOAT
       },
       longitude: {
+        allowNull: false,
         type: Sequelize.FLOAT
       },
       sequence: {
+        allowNull: false,
         type: Sequelize.INTEGER
       }, 
       trailId: {

@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { Loader } from "../ui/Loader/Loader";
 import { useEffect, useState } from "react";
 import Navbar from "../page/navbar/Navbar";
-import MainMap from "../page/mainMap/MainMap";
+// import MainMap from "../page/mainMap/MainMap";
 import Main from "../page/main/Main";
 import Trails from "../page/trails/Trails";
 import Registration from "../page/auth/Registration";
