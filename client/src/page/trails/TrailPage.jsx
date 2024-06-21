@@ -8,27 +8,29 @@ import Reviews from "../revies/Reviews";
 function TrailPage({ trails, waupoint, reviews, setreviews, user }) {
   const { numberId } = useParams();
   const navigate = useNavigate();
-  
+
   const [addComment, setAddComment] = useState(true);
-  
+
   let isCommented;
-if (user) {
+  if (user) {
     isCommented = reviews.find((el) => el.userId === user.id);
 }
-
     useEffect(() => {
       if (isCommented) {
         setAddComment(false);
       }
     }, []);
+
   const onHandleDelite = async () => {
-        const {data} = await requestAxios.delete(`/reviews/${reviews.commentId}`)
-       
-        if(data.message === 'success') {
-          setreviews((prev) => prev.filter((delReview) => delReview.userId !== user.id));
-          setAddComment(true);
-        }
-  }
+    const { data } = await requestAxios.delete(`/reviews/${reviews.commentId}`);
+
+    if (data.message === "success") {
+      setreviews((prev) =>
+        prev.filter((delReview) => delReview.userId !== user.id)
+      );
+      setAddComment(true);
+    }
+  };
 
   const resultReview = reviews.filter((el) => el.trailId === +numberId);
   const trail = trails.find((el) => el.id === +numberId);
@@ -42,6 +44,9 @@ if (user) {
       </div>
       <h1 className="trail-page-text">TrailPage</h1>
       <h2 style={{ color: "white" }}>Route name: {trail.title}</h2>
+      <div className="rating-wrapper">
+      <p className="rating">Rating: {count}</p>
+      </div>
       <div className="allPort">
         <div className="isComment">
           <p className="commentHeader">Discuss</p>
@@ -50,7 +55,11 @@ if (user) {
               <div className="elCommentMap" key={index}>
                 <p className="commentText">{el.comment}</p>
                 {user && user.id === el.userId && (
-                  <button type="button" onClick={onHandleDelite}>
+                  <button
+                    className="review-card-button-delete"
+                    type="button"
+                    onClick={onHandleDelite}
+                  >
                     Delete
                   </button>
                 )}
@@ -72,7 +81,6 @@ if (user) {
           />
         )}
       </div>
-      <div className="rating">Rating: {count}</div>
     </div>
   );
 }

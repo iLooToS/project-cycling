@@ -5,23 +5,15 @@ import { useEffect, useState } from "react";
 import MainMap from "../mainMap/MainMap";
 
 function TrailsItem({ user, trail, setTrails, waupoint }) {
-  console.log('USERRRRRRR',user);
-  console.log('TRAILLLLLL',trail);
   const result = waupoint.filter((el) => el.trailId === trail.id);
   const [waypoint, setWaypoint] = useState(result);
 
-
-
   const onHandleDelete = async () => {
     const { data } = await requestAxios.delete(`/trails/${trail.id}`);
-    console.log(data, 11111111111111);
-    if (data.message === 'success') {
+    if (data.message === "success") {
       setTrails((prev) => prev.filter((deltrail) => deltrail.id !== trail.id));
-      console.log(trail);
     }
   };
-
-
 
   return (
     <div className="route-card-wrapper" key={trail.id}>
@@ -33,11 +25,15 @@ function TrailsItem({ user, trail, setTrails, waupoint }) {
         <button className="route-card-button">
           <Link to={`/showTrail/${trail.id}`}>About</Link>
         </button>
-        {user && user.id === trail.userId &&
-      <button className="route-card-button-delete" type='button' onClick={onHandleDelete}>
-      Удалить
-    </button>
-        }
+        {user && user.id === trail.userId && (
+          <button
+            className="route-card-button-delete"
+            type="button"
+            onClick={onHandleDelete}
+          >
+            Удалить
+          </button>
+        )}
       </div>
     </div>
   );
