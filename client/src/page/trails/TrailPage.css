@@ -1,0 +1,203 @@
+.isTrailPage {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+.trail-page-text {
+  color: rgb(24, 224, 217);
+}
+
+  /* Заголовки страницы */
+  .isTrailPage h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  
+  .isTrailPage h2 {
+    font-size: 24px;
+    color: #007bff;
+    margin-bottom: 20px;
+  }
+  
+  /* Кнопка "назад" */
+  .button1 {
+    display: flex;
+    text-align: right;
+    margin-bottom: 20px;
+  }
+  
+  .button1 button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #008000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button1 button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Область с комментариями и картой */
+  .allPort {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .isComment .commentHeader {
+    font-size: 24px;
+    color: rgb(24, 224, 217);
+    margin-bottom: 10px;
+  }
+  
+  .elCommentMap {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .elCommentMap .commentText {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .elCommentMap .commentAuthor {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .tty {
+    flex: 1;
+  }
+  
+  /* Отзывы */
+  .reviewsContainer {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+  }
+  
+.rating-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+  
+  .rating {
+    background-color: rgba(4, 36, 41, 0.7);
+    width: 170px;
+    border-radius: 20px;
+    color: white;
+    font-size: 25px;
+    margin-top: 20px;
+  }
+  
+  /* Форма добавления отзыва */
+  .reviewForm {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .reviewForm input[type="text"],
+  .reviewForm input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .reviewForm textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .reviewForm button[type="submit"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .reviewForm button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+  .isComment {
+    flex: 1;
+    overflow-y: auto; /* Добавляем скролл по вертикали при необходимости */
+    max-height: 400px; /* Максимальная высота блока с комментариями */
+  }
+  
+  .isComment .commentHeader {
+    font-size: 24px;
+    color: rgb(24, 224, 217);
+    margin-bottom: 10px;
+  }
+  
+  .elCommentMap {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .elCommentMap .commentText {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .elCommentMap .commentAuthor {
+    font-size: 14px;
+    color: #666;
+  }
+
+  .review-card-button-delete {
+    width: 100px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    background-color: red;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .review-card-button-delete:hover {
+    background-color: #0056b3;
+  }
+  .elCommentMap:hover button {
+    cursor: pointer;
+    display: block;
+  }
+  
+  .elCommentMap button {
+    display: none;
+  }
