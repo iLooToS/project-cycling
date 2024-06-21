@@ -7,23 +7,16 @@ module.exports = {
       'Trails',
       [
         {
-          title: 'sunny Day',
-          description:'любимое время года - это лето',
+          title: 'Сестрорецкий трип',
+          description:'Этот маршрут хорошо подойдёт для начинающих.',
           userId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          title: 'rainy Day',
-          description:'в дождь тоже здорово',       
+          title: 'Лемболовская дорога',
+          description:'Данный маршрут порадует вас прекрасными видами на озеро.',       
           userId: 2,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          title: 'Winter Day',
-          description:'бывает очень холодно',
-          userId: 3,
           createdAt: new Date(),
           updatedAt: new Date(),
         },

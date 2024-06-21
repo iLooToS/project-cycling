@@ -5,7 +5,7 @@ import "./Reviews.css";
 
 function Reviews({ user, setreviews, numberId, setAddComment, addComment}) {
     const [comment, setComment] = useState('');
-    let texyInput = useRef(null)
+    let texyInput = useRef(null);
     
     const onHandleSubmit = async (e) => {
       e.preventDefault();
