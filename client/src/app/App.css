@@ -12,7 +12,12 @@
 }
 
 .main-loader{
+  width: 100vw;
+  height: 50vw;
   display: flex;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
   align-items: center;
   justify-content: center;
 }

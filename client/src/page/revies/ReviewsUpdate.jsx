@@ -25,16 +25,16 @@ function ReviewsUpdate({ title }) {
   
     return (
       <div>
-        <h1>comment</h1>
+        <h1>Comment</h1>
         <form onSubmit={onHandleSubmit}>
           <input
           type='text'
           ref={texyInput}
-          placeholder='Комментарий'
+          placeholder='Comment'
           value={comment}
           onChange={(e) => setComment(e.target.value)}
         />
-         {comment === '' ? (null) :(<button type='submit'>создать</button>)}
+         {comment === '' ? (null) :(<button type='submit'>Submit</button>)}
         </form>
       </div>
     );
